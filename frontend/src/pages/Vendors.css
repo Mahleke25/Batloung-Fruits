@@ -1,0 +1,532 @@
+
+/* =========================================
+   BATLOUNG FRUITS - VENDOR MANAGEMENT
+========================================= */
+
+.vendors-page {
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  color: #24332b;
+  box-sizing: border-box;
+}
+
+.vendors-page * {
+  box-sizing: border-box;
+}
+
+/* Summary cards */
+
+.vendor-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.vendor-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e7eee8;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(25, 60, 40, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vendor-summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(25, 60, 40, 0.09);
+}
+
+.vendor-summary-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: #edf6ef;
+  border-radius: 12px;
+  font-size: 23px;
+}
+
+.vendor-summary-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vendor-summary-card div span {
+  color: #77847a;
+  font-size: 13px;
+}
+
+.vendor-summary-card strong {
+  color: #173c2c;
+  font-size: 25px;
+}
+
+/* Vendor form */
+
+.vendor-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.vendor-form .management-form-field {
+  min-width: 0;
+}
+
+.vendor-form input,
+.vendor-form select,
+.vendors-page .management-toolbar input,
+.vendors-page .management-toolbar select {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 13px;
+  border: 1px solid #dce5dd;
+  border-radius: 8px;
+  background: #fff;
+  color: #26382d;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.vendor-form input:focus,
+.vendor-form select:focus,
+.vendors-page .management-toolbar input:focus,
+.vendors-page .management-toolbar select:focus {
+  border-color: #27834c;
+  box-shadow: 0 0 0 3px rgba(39, 131, 76, 0.12);
+}
+
+.vendor-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: 1 / -1;
+  padding-top: 5px;
+}
+
+.vendor-primary-btn {
+  min-height: 42px;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #176b3a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.vendor-primary-btn:hover {
+  background: #10552d;
+  transform: translateY(-1px);
+}
+
+/* Search and filters */
+
+.vendors-page .management-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+  gap: 18px;
+  align-items: end;
+  margin: 20px 0;
+}
+
+.vendor-location-text {
+  display: inline-block;
+  max-width: 220px;
+  color: #526b58;
+  line-height: 1.5;
+}
+
+/* Table */
+
+.vendor-table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+}
+
+.vendor-table th {
+  padding: 15px 13px;
+  background: #f1f6f1;
+  color: #31523b;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.vendor-table td {
+  padding: 15px 13px;
+  border-bottom: 1px solid #edf0ed;
+  color: #526057;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.vendor-table tbody tr:hover {
+  background: #f8fbf8;
+}
+
+.vendor-table td strong {
+  color: #263d2d;
+}
+
+.vendor-table .crud-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.vendor-table .crud-btn {
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.vendors-page .status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.vendors-page .status-active {
+  background: #e4f5e9;
+  color: #16713a;
+}
+
+.vendors-page .status-inactive {
+  background: #fcebea;
+  color: #b13b35;
+}
+
+/* Alerts */
+
+.vendors-page .management-alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
+  padding: 13px 16px;
+  border-radius: 9px;
+}
+
+.vendors-page .management-alert-success {
+  background: #eaf7ee;
+  color: #176b3a;
+}
+
+.vendors-page .management-alert-error {
+  background: #fff0ef;
+  color: #b52d27;
+}
+
+/* =========================================
+   MAP MODAL
+========================================= */
+
+.vendor-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(12, 27, 18, 0.68);
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+}
+
+.vendor-map-modal {
+  width: min(900px, 100%);
+  max-height: 94vh;
+  overflow-y: auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 17px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+}
+
+.vendor-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #e9eee9;
+}
+
+.vendor-modal-header h2 {
+  margin: 5px 0;
+  color: #173c2c;
+  font-size: 23px;
+}
+
+.vendor-modal-header p {
+  margin: 0;
+  color: #78847a;
+  font-size: 13px;
+}
+
+.vendor-modal-close {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f4f0;
+  color: #263c2d;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.vendor-modal-close:hover {
+  background: #e1eee3;
+}
+
+.vendor-modal-address {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 17px 0;
+  padding: 14px;
+  background: #f2f7f2;
+  border-radius: 10px;
+}
+
+.vendor-modal-address > span {
+  font-size: 24px;
+}
+
+.vendor-modal-address strong {
+  color: #264832;
+  font-size: 13px;
+}
+
+.vendor-modal-address p {
+  margin: 4px 0 0;
+  color: #647269;
+  font-size: 13px;
+}
+
+/* Route summary */
+
+.vendor-route-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 17px 0;
+}
+
+.vendor-route-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 15px;
+  background: #edf6ef;
+  border: 1px solid #dcecdf;
+  border-radius: 10px;
+}
+
+.vendor-route-summary span {
+  color: #64756a;
+  font-size: 12px;
+}
+
+.vendor-route-summary strong {
+  color: #176b3a;
+  font-size: 21px;
+}
+
+/* Leaflet map */
+
+.vendor-map-container {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  min-height: 430px;
+  margin-top: 15px;
+  overflow: hidden;
+  border: 1px solid #dce5dd;
+  border-radius: 12px;
+  background: #e8eee8;
+}
+
+.vendor-leaflet-map {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  z-index: 1;
+}
+
+.vendor-map-container .leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+}
+
+.custom-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.map-marker-user,
+.map-marker-vendor {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 3px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.map-marker-user {
+  background: #2878c7;
+}
+
+.map-marker-vendor {
+  background: #16834a;
+}
+
+/* Map loading and errors */
+
+.vendor-map-message,
+.vendor-map-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  padding: 35px 20px;
+  text-align: center;
+  background: #f5f8f5;
+  border-radius: 12px;
+}
+
+.vendor-map-message strong,
+.vendor-map-error strong {
+  color: #274631;
+}
+
+.vendor-map-message p,
+.vendor-map-error p {
+  margin: 0;
+  color: #6c7b70;
+  font-size: 13px;
+}
+
+.vendor-map-error {
+  background: #fff2f0;
+}
+
+.vendor-map-error strong {
+  color: #a9322b;
+}
+
+.vendor-map-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #dcecdf;
+  border-top-color: #16834a;
+  border-radius: 50%;
+  animation: vendor-spin 0.8s linear infinite;
+}
+
+@keyframes vendor-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vendor-map-disclaimer {
+  margin: 12px 0;
+  color: #77847a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.vendor-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #e9eee9;
+}
+
+.vendor-modal-footer span {
+  color: #849087;
+  font-size: 11px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+  .vendor-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .vendors-page {
+    padding: 14px;
+  }
+
+  .vendor-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-form {
+    grid-template-columns: 1fr;
+  }
+
+  .vendors-page .management-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-form-actions {
+    flex-wrap: wrap;
+  }
+
+  .vendor-map-modal {
+    padding: 16px;
+  }
+
+  .vendor-route-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .vendor-map-container,
+  .vendor-leaflet-map {
+    height: 350px;
+    min-height: 350px;
+  }
+
+  .vendor-modal-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
